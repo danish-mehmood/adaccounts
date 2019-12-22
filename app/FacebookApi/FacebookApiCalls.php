@@ -42,5 +42,27 @@ class FacebookApiCalls{
 
 
     }
+
+    public function Date_filter($startDate  , $endDate){
+        $curl = curl_init();
+        // $link = $url ;
+        // $url ="https://graph.facebook.com/v5.0/$this->user_id/adaccounts/?fields=name,account_status,account_id,amount_spent&access_token=$this->access_token";
+        $url="https://graph.facebook.com/v5.0/$this->user_id/adaccounts?fields=name,insights.time_range({'since':'$startDate','until':'$endDate'}){spend},account_status,account_id&access_token=$this->access_token";
+        // return $url;
+        curl_setopt($curl , CURLOPT_URL , $url);
+        curl_setopt($curl , CURLOPT_RETURNTRANSFER , 1);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+        $result = curl_exec($curl);
+        $json = json_decode($result , true );
+        curl_close($curl);
+ 
+        return $json;
+        
+ 
+ 
+     }
+
+    
 }
 ?>

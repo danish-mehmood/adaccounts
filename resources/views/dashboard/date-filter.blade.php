@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>gateway to facebook</title>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css" rel="stylesheet" type="text/css" />
+    
     <!-- plugins:css -->
     <!--datepicker files -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/css/bootstrap-datetimepicker.min.css">
-    {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.min.css">
     <!--end of css files here-->
 
     <link rel="stylesheet" href="{{asset('vendors/iconfonts/mdi/css/materialdesignicons.min.css')}}">
@@ -519,9 +519,9 @@
                 <div><img src="https://pawelgrzybek.com/siema/assets/siema--pink.svg" alt="Siema image" /></div>
                 <div><img src="https://pawelgrzybek.com/siema/assets/siema--yellow.svg" alt="Siema image" /></div>
               </div> --}}
-        
-            {{-- <h1>{{$prev_link}}</h1>           --}}
-            <form id="paginate_form" action="{{route('prev_paginator')}}" method="POST">  
+          
+          
+            <form id="paginate_form" action="{{route('prev_date_paginator')}}" method="POST">  
               @csrf
             @if($prev_link != "")
             <input type="submit" value="Prev">
@@ -530,7 +530,7 @@
           </form>
 
 
-        <form id="paginate_form2" action="{{route('next')}}" method="POST">
+        <form id="paginate_form2" action="{{route('next_date_paginator')}}" method="POST">
           @csrf 
           @if($next_link != "")
                <input type="submit" value="Next">
@@ -640,7 +640,7 @@
                             
                             
                               <td>
-                              ${{$spent[$i]/100}}
+                              ${{$spent[$i]}}
                             </td>
                           </tr>
                         @endfor
@@ -892,7 +892,7 @@
     <script src="{{asset('js/shared/off-canvas.js')}}"></script>
     <script src="{{asset('js/shared/misc.js')}}"></script>
 
-    <script src="{{asset('js/myjs.js')}}"></script>
+    
 
     <!-- endinject -->
     <!-- Custom js for this page-->
@@ -900,11 +900,9 @@
 
 
     <!--script files for date picker-->
-    <script src="https://code.jquery.com/jquery-2.1.3.min.js">
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/js/bootstrap-datetimepicker.min.js">
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
+    <script src="{{asset('js/myjs.js')}}"></script>
     <!--script files end here for date picker-->
 
   </body>

@@ -15,12 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes(['register'=>false , 'reset'=>false]);
+Auth::routes([ 'reset'=>false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix'=>'admin'  , 'middleware'=>['auth' , 'can:isAdmin']] , function(){
     Route::get('/',"facebookAdsController@index" )->name('dashboard');
-    Route::post('/page',"facebookAdsController@paginator" )->name('paginator');
-    Route::post('/page/date-filter', "facebookAdsController@filtered")->name('filtered');
+    Route::post('/page/next',"facebookAdsController@next_paginator" )->name('next');
+    Route::post('/page/prev',"facebookAdsController@prev_paginator" )->name('prev_paginator');
+    Route::post('/date-filter', "facebookAdsController@filtered")->name('filtered');
+    Route::post('date-filter/page/next',"facebookAdsController@next_date_paginator" )->name('next_date_paginator');
+    Route::post('date-filter/page/prev',"facebookAdsController@prev_date_paginator" )->name('prev_date_paginator');
 });
